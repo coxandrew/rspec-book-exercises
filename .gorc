@@ -1,3 +1,2 @@
 open ~/Documents/Books/the-rspec-book_p1_0.pdf
-mate .
-# mate ~/Documents/Books/rspec_source_code
+open rspec-book.tmproj

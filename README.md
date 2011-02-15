@@ -30,10 +30,10 @@ If you can't remember what you did last, you can refresh your memory by looking 
 
 Each mini-project should have its own subdirectory with RSpec or Cucumber tests. For a basic project, you should be able to run tests with:
 
-RSpec:
+RSpec (runs all examples in spec directory):
 
     $ rspec spec
 
-Cucumber
+Cucumber (runs all features in features directory):
 
-    $ cucumber features
+    $ cucumber
