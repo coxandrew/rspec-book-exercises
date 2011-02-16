@@ -37,3 +37,18 @@ RSpec (runs all examples in spec directory):
 Cucumber (runs all features in features directory):
 
     $ cucumber
+
+### Running spork
+
+*Note: this is not working yet (trouble with LOAD_PATH)*
+
+Install the prerelease version (for Rails 3+). In your Gemfile:
+
+    gem 'spork', '~> 0.9.0.rc'
+
+Install spork and bootstrap your project with spork directives:
+
+    $ bundle install
+    $ spork --bootstrap
+
+Follow the instructions written to `spec_helper`
