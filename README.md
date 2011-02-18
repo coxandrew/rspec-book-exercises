@@ -55,14 +55,21 @@ Follow the instructions written to `spec_helper`
 
 ## Things I've learned
 
+### Principles
+
+* Single Responsibility Principle
+
 ### Code smells
 
-* temporary variable
-* long method
+* Temporary Variable
+* Long Method
+* Large Class
+* Mixing abstractions (e.g. passing variables from method to method, but using instance variables for others - p. 105)
 
 ### Refactoring techniques
 
-* extract method
+* Extract Method
+* Extract Class (remedy for SRP and Large Class)
 
 ### Ruby skills
 
