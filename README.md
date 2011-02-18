@@ -52,3 +52,22 @@ Install spork and bootstrap your project with spork directives:
     $ spork --bootstrap
 
 Follow the instructions written to `spec_helper`
+
+## Things I've learned
+
+### Code smells
+
+* temporary variable
+* long method
+
+### Refactoring techniques
+
+* extract method
+
+### Ruby skills
+
+inject iterator (p. 102):
+
+    (0..3).inject(0) do |count, index|
+      count + (exact_match?(guess, index) ? 1 : 0)
+    end
