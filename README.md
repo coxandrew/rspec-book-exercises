@@ -78,3 +78,32 @@ inject iterator (p. 102):
     (0..3).inject(0) do |count, index|
       count + (exact_match?(guess, index) ? 1 : 0)
     end
+
+### Testing techniques
+
+Use RSpec output as Class documentation:
+
+    $ rspec spec/codebreaker/marker_spec.rb --format nested
+    Codebreaker::Marker
+      #exact_match_count
+        with no matches
+          returns 0
+        with 1 exact match
+          returns 1
+        with 1 number match
+          returns 0
+        with 1 exact match and 1 number match
+          returns 1
+      #number_match_count
+        with no matches
+          returns 0
+        with 1 number match
+          returns 1
+        with 1 exact match
+          returns 0
+        with 1 exact match and 1 number match
+          returns 1
+
+    Finished in 0.00461 seconds
+    8 examples, 0 failures
+
