@@ -58,7 +58,7 @@ Exploratory Testing
 
 > As you’re doing this, flaws will appear for a variety of reasons. Per- haps there are missing scenarios or code examples. Some flaws may stem from naive design choices. The reasons for these flaws are not important. What is important is that the investment we’ve made to get this far has been very, very small compared to an exhaustive up-front requirements-gathering process. An interactive session with working software is worth a thousand meetings.
 
-*Testing results:*
+*Testing results (from end of Chapter 8)*
 
 * Too few characters
 * No warning on too many characters
@@ -66,3 +66,9 @@ Exploratory Testing
 * Duplicate numbers are still scored
 * Non UTF-8 characters are ok
 * No way to quit
+
+## Console test drivers
+
+Use `at_exit` to print something to STDOUT on exit:
+
+    at_exit { puts "\n***\nThe secret code was: #{secret_code}\n***" }
