@@ -57,3 +57,12 @@ Exploratory Testing
 > Perhaps you’re wondering why we’d want to do exploratory testing if we’ve already tested the app. Well, we haven’t. Remember that BDD is a design practice, not a testing practice. We’re using executable exam- ples of how we want the application to behave. But just as Big Design Up Front fails to allow for discovery of features and designs that nat- urally emerge through iterative development, driving out behavior with examples fails to unearth all of the corner cases that we’ll naturally discover by simply using the software.
 
 > As you’re doing this, flaws will appear for a variety of reasons. Per- haps there are missing scenarios or code examples. Some flaws may stem from naive design choices. The reasons for these flaws are not important. What is important is that the investment we’ve made to get this far has been very, very small compared to an exhaustive up-front requirements-gathering process. An interactive session with working software is worth a thousand meetings.
+
+*Testing results:*
+
+* Too few characters
+* No warning on too many characters
+* No error on non-numeric characters
+* Duplicate numbers are still scored
+* Non UTF-8 characters are ok
+* No way to quit
