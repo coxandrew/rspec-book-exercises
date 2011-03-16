@@ -22,6 +22,30 @@ inject iterator (p. 102):
       count + (exact_match?(guess, index) ? 1 : 0)
     end
 
+`yield self` idiom for helper methods:
+
+    describe Thing do
+      def given_thing_with(options)
+        yield Thing.new do |thing|
+          thing.set_status(options[:status])
+        end
+      end
+
+      it "should do something when ok" do
+        given_thing_with(:status => 'ok') do |thing|
+          thing.do_fancy_stuff(1, true, :move => 'left', :obstacles => nil)
+          ...
+        end
+      end
+
+      it "should do something else when not so good" do
+        given_thing_with(:status => 'not so good') do |thing|
+          thing.do_fancy_stuff(1, true, :move => 'left', :obstacles => nil)
+          ...
+        end
+      end
+    end
+
 ## Testing techniques
 
 Use RSpec output as Class documentation:
@@ -72,3 +96,11 @@ Exploratory Testing
 Use `at_exit` to print something to STDOUT on exit:
 
     at_exit { puts "\n***\nThe secret code was: #{secret_code}\n***" }
+
+## Using RSpec for documentation
+
+    $ rspec spec --format documentation
+
+## Quick tips
+
+Never use `.should != "something"`. Use `.should_not == "something"` instead.

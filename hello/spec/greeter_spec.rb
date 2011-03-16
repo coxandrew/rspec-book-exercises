@@ -10,4 +10,10 @@ describe "RSpec Greeter" do
     greeting = greeter.greet
     greeting.should == "Hello RSpec!"
   end
+
+  it "says 'Hello [something]'" do
+    greeter = RSpecGreeter.new
+    greeting = greeter.greet
+    greeting.should match /^Hello [a-zA-Z]+/
+  end
 end

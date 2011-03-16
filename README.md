@@ -48,7 +48,7 @@ Install the prerelease version (for Rails 3+). In your Gemfile:
 
 Install spork and bootstrap your project with spork directives:
 
-    $ bundle install
+    $ bundle
     $ spork --bootstrap
 
 Follow the instructions written to `spec_helper`
