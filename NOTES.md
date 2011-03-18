@@ -101,6 +101,80 @@ Use `at_exit` to print something to STDOUT on exit:
 
     $ rspec spec --format documentation
 
+## Use stub_chain to stub long Rails fluent statements:
+
+To test this:
+
+    Article.recent.published.authored_by(params[:author_id])
+
+Use a `stub_chain`:
+
+    article = double()
+    Article.stub_chain(:recent, :published, :authored_by).and_return(article)
+
+## Expected arguments
+
+Look for a hash argument with at least some key-value pairs:
+
+    mock_account.should_receive(:add_payment_accounts).
+      with(hash_including('Electric' => '123', 'Gas' => '234'))
+
 ## Quick tips
 
-Never use `.should != "something"`. Use `.should_not == "something"` instead.
+### Don't use !=
+
+Prefer:
+
+    "something_else".should_not == "something"
+
+Instead of:
+
+    "something_else".should != "something"
+
+### Testing changes
+
+In Rails, test that statements change:
+
+    expect {
+      User.create!(:role => "admin")
+    }.to change{ User.admins.count }
+
+Or to test that they change `from`, `by` or `to` a specific number:
+
+    expect {
+      User.create!(:role => "admin")
+    }.to change{ User.admins.count }.by(1)
+
+    expect {
+      User.create!(:role => "admin")
+    }.to change{ User.admins.count }.to(1)
+
+    expect {
+      User.create!(:role => "admin")
+    }.to change{ User.admins.count }.from(0).to(1)
+
+### Use subjects to describe an object
+
+Refer to the defined subject as `subject` in your expectations:
+
+    describe Person do
+      subject { Person.new(:birthdate => 19.years.ago) }
+      specify { subject.should be_eligible_to_vote }
+    end
+
+Or use an implicit subject and `should` will delegate to the `subject`:
+
+    describe Person do
+      subject { Person.new(:birthdate => 19.years.ago) }
+      it { should be_eligible_to_vote }
+    end
+
+If you don't need any arguments, the `describe` statement can be used as the subject (this asserts that `Person.new.happy?` is `true`):
+
+    describe Person do
+      it { should be_happy }
+    end
+
+## Questions
+
+What's the difference between `stub` and `mock`: they gloss over it on page 197.
