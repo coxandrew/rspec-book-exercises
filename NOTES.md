@@ -119,6 +119,33 @@ Look for a hash argument with at least some key-value pairs:
     mock_account.should_receive(:add_payment_accounts).
       with(hash_including('Electric' => '123', 'Gas' => '234'))
 
+## Add autotest support
+
+Create an 'autotest' subdirectory in the project root
+
+Add a `discover.rb` file in the 'autotest' directory with:
+
+    Autotest.add_discovery { "rspec2" }
+
+Add 'autotest' gems to your Gemfile:
+
+    gem "autotest"
+    gem "autotest-fsevent"
+    gem "autotest-growl"
+
+Install gems:
+
+    $ bundle
+
+Create a '~/.autotest' file with:
+
+    require 'autotest/growl'
+    require 'autotest/fsevent'
+
+Run autotest from your project root:
+
+    $ autotest
+
 ## Quick tips
 
 ### Don't use !=
