@@ -146,6 +146,28 @@ Run autotest from your project root:
 
     $ autotest
 
+## Use Cucumber steps within step definitions:
+
+Sugar-free:
+
+    When /I transfer (.*) from (.*) to (.*)/ do |amount, source, target|
+      When "I select #{source} as the source account"
+      When "I select #{target} as the target account"
+      When "I set #{amount} as the amount"
+      When "I click transfer"
+    end
+
+Or with some sugar:
+
+    When /I transfer (.*) from (.*) to (.*)/ do |amount, source, target|
+      steps %Q{
+        When I select #{source} as the source account
+        And I select #{target} as the target account
+        And I set #{amount} as the amount
+        And I click transfer
+      }
+    end
+
 ## Quick tips
 
 ### Don't use !=
@@ -202,6 +224,18 @@ If you don't need any arguments, the `describe` statement can be used as the sub
       it { should be_happy }
     end
 
+### Cucumber profiles
+
+Set up profiles in `cucumber.yml` to easily run different feature sets. For example, define a 'wip' profile:
+
+    wip: --tags @wip features
+
+And execute it by:
+
+    $ cucumber -p wip
+
 ## Questions
 
-What's the difference between `stub` and `mock`: they gloss over it on page 197.
+What's the difference between `stub` and `mock`? (p. 197)
+
+When would the `description` be used in a custom matcher? (p. 242)
